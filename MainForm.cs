@@ -15,6 +15,11 @@ namespace BDSP_Randomizer
     public partial class MainForm : DarkForm
     {
         private static readonly Random getrandom = new Random();
+        private List<int> _gen1 = new List<int>();
+        private List<int> _gen2 = new List<int>();
+        private List<int> _gen3 = new List<int>();
+        private List<int> _gen4 = new List<int>();
+        List<int> CurrentPool = new List<int>();
 
         public static int GetRandomNumber(int min, int max)
         {
@@ -29,6 +34,23 @@ namespace BDSP_Randomizer
         {
             InitializeComponent();
             tbLog.AppendText("BDSP Randomizer Intialized" + Environment.NewLine);
+
+            for(int i = 1; i < 152; i++)
+            {
+                _gen1.Add(i);
+            }
+            for (int i = 152; i < 252; i++)
+            {
+                _gen2.Add(i);
+            }
+            for (int i = 252; i < 387; i++)
+            {
+                _gen3.Add(i);
+            }
+            for (int i = 387; i < 494; i++)
+            {
+                _gen4.Add(i);
+            }
         }
 
         public bool isCompressed()
@@ -42,7 +64,18 @@ namespace BDSP_Randomizer
             resourcesPath = AppDomain.CurrentDomain.BaseDirectory + "\\resources";
             tbLog.AppendText("resources loaded" + Environment.NewLine);
         }
+
+
         public int PickPokemon()
+        {
+            lock (getrandom)
+            {
+                return CurrentPool[getrandom.Next(CurrentPool.Count)];
+            }
+        }
+
+
+        public int PickFromAllPokemon()
         {
             int min = 1;
             int max = 493;
@@ -104,6 +137,66 @@ namespace BDSP_Randomizer
                 DarkMessageBox.Show(this, "Unable to load encounter sheet. Make sure you selected the right version and they are in the resources folder", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (CurrentPool.Count == 0)
+            {
+                tbLog.AppendText("Apppending Selected Pokemon Gens to pool" + Environment.NewLine);
+
+                if (cbGen1.Checked)
+                {
+                    foreach (int i in _gen1)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 1 added to pool" + Environment.NewLine);
+                }
+                if (cbGen2.Checked)
+                {
+                    foreach (int i in _gen2)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 2 added to pool" + Environment.NewLine);
+                }
+                if (cbGen3.Checked)
+                {
+                    foreach (int i in _gen3)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 3 added to pool" + Environment.NewLine);
+                }
+                if (cbGen4.Checked)
+                {
+                    foreach (int i in _gen4)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 4 added to pool" + Environment.NewLine);
+                }
+            }
+            else
+            {
+                CurrentPool.Clear();
+                tbLog.AppendText("Apppending Selected Pokemon Gens to pool" + Environment.NewLine);
+
+                if (cbGen1.Checked)
+                {
+                    foreach (int i in _gen1)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 1 added to pool" + Environment.NewLine);
+                }
+                if (cbGen2.Checked)
+                {
+                    foreach (int i in _gen2)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 2 added to pool" + Environment.NewLine);
+                }
+                if (cbGen3.Checked)
+                {
+                    foreach (int i in _gen3)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 3 added to pool" + Environment.NewLine);
+                }
+                if (cbGen4.Checked)
+                {
+                    foreach (int i in _gen4)
+                        CurrentPool.Add(i);
+                    tbLog.AppendText("Gen 4 added to pool" + Environment.NewLine);
+                }
+            }
+                
             tbLog.AppendText("Randomizing Encounters!" + Environment.NewLine);
             for (int i = 0; i < encounters.Length; i++)
             {
@@ -127,6 +220,7 @@ namespace BDSP_Randomizer
                 }
             }
             SaveEncounterSheet(encounters);
+            
             Thread.Sleep(300);
         }
         private void RandomizeEncounterLevels()

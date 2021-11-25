@@ -47,13 +47,18 @@ namespace BDSP_Randomizer
             this.numMaxLevel = new DarkUI.Controls.DarkNumericUpDown();
             this.darkLabel1 = new DarkUI.Controls.DarkLabel();
             this.numMinLevel = new DarkUI.Controls.DarkNumericUpDown();
-            this.darkLabel3 = new DarkUI.Controls.DarkLabel();
+            this.darkGroupBox4 = new DarkUI.Controls.DarkGroupBox();
+            this.cbGen1 = new DarkUI.Controls.DarkCheckBox();
+            this.cbGen3 = new DarkUI.Controls.DarkCheckBox();
+            this.cbGen2 = new DarkUI.Controls.DarkCheckBox();
+            this.cbGen4 = new DarkUI.Controls.DarkCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.darkGroupBox1.SuspendLayout();
             this.darkGroupBox2.SuspendLayout();
             this.darkGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinLevel)).BeginInit();
+            this.darkGroupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRandomize
@@ -123,7 +128,7 @@ namespace BDSP_Randomizer
             this.pictureBox1.Image = global::BDSP_Randomizer.Properties.Resources.Pokemon_Brilliant_Diamond_Shining_Pearl;
             this.pictureBox1.Location = new System.Drawing.Point(13, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(583, 236);
+            this.pictureBox1.Size = new System.Drawing.Size(454, 236);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -150,7 +155,7 @@ namespace BDSP_Randomizer
             // 
             this.rbDiamond.AutoSize = true;
             this.rbDiamond.Checked = true;
-            this.rbDiamond.Location = new System.Drawing.Point(18, 19);
+            this.rbDiamond.Location = new System.Drawing.Point(18, 37);
             this.rbDiamond.Name = "rbDiamond";
             this.rbDiamond.Size = new System.Drawing.Size(67, 17);
             this.rbDiamond.TabIndex = 12;
@@ -160,7 +165,7 @@ namespace BDSP_Randomizer
             // rbPearl
             // 
             this.rbPearl.AutoSize = true;
-            this.rbPearl.Location = new System.Drawing.Point(105, 19);
+            this.rbPearl.Location = new System.Drawing.Point(105, 37);
             this.rbPearl.Name = "rbPearl";
             this.rbPearl.Size = new System.Drawing.Size(49, 17);
             this.rbPearl.TabIndex = 13;
@@ -184,7 +189,6 @@ namespace BDSP_Randomizer
             // darkGroupBox2
             // 
             this.darkGroupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.darkGroupBox2.Controls.Add(this.darkLabel3);
             this.darkGroupBox2.Controls.Add(this.rbPearl);
             this.darkGroupBox2.Controls.Add(this.rbDiamond);
             this.darkGroupBox2.Location = new System.Drawing.Point(602, 13);
@@ -272,22 +276,70 @@ namespace BDSP_Randomizer
             0,
             0});
             // 
-            // darkLabel3
+            // darkGroupBox4
             // 
-            this.darkLabel3.AutoSize = true;
-            this.darkLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.darkLabel3.Location = new System.Drawing.Point(6, 39);
-            this.darkLabel3.Name = "darkLabel3";
-            this.darkLabel3.Size = new System.Drawing.Size(171, 39);
-            this.darkLabel3.TabIndex = 14;
-            this.darkLabel3.Text = "I currently have no idea if\r\n_d and _p is related to which \r\nversion of pokemon d" +
-    "o them both. \r\n";
+            this.darkGroupBox4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox4.Controls.Add(this.cbGen1);
+            this.darkGroupBox4.Controls.Add(this.cbGen3);
+            this.darkGroupBox4.Controls.Add(this.cbGen2);
+            this.darkGroupBox4.Controls.Add(this.cbGen4);
+            this.darkGroupBox4.Location = new System.Drawing.Point(473, 13);
+            this.darkGroupBox4.Name = "darkGroupBox4";
+            this.darkGroupBox4.Size = new System.Drawing.Size(123, 90);
+            this.darkGroupBox4.TabIndex = 15;
+            this.darkGroupBox4.TabStop = false;
+            this.darkGroupBox4.Text = "Pokemon Options";
+            // 
+            // cbGen1
+            // 
+            this.cbGen1.AutoSize = true;
+            this.cbGen1.Checked = true;
+            this.cbGen1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGen1.Location = new System.Drawing.Point(6, 27);
+            this.cbGen1.Name = "cbGen1";
+            this.cbGen1.Size = new System.Drawing.Size(55, 17);
+            this.cbGen1.TabIndex = 5;
+            this.cbGen1.Text = "Gen 1";
+            // 
+            // cbGen3
+            // 
+            this.cbGen3.AutoSize = true;
+            this.cbGen3.Checked = true;
+            this.cbGen3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGen3.Location = new System.Drawing.Point(6, 50);
+            this.cbGen3.Name = "cbGen3";
+            this.cbGen3.Size = new System.Drawing.Size(55, 17);
+            this.cbGen3.TabIndex = 6;
+            this.cbGen3.Text = "Gen 3";
+            // 
+            // cbGen2
+            // 
+            this.cbGen2.AutoSize = true;
+            this.cbGen2.Checked = true;
+            this.cbGen2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGen2.Location = new System.Drawing.Point(62, 27);
+            this.cbGen2.Name = "cbGen2";
+            this.cbGen2.Size = new System.Drawing.Size(55, 17);
+            this.cbGen2.TabIndex = 11;
+            this.cbGen2.Text = "Gen 2";
+            // 
+            // cbGen4
+            // 
+            this.cbGen4.AutoSize = true;
+            this.cbGen4.Checked = true;
+            this.cbGen4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGen4.Location = new System.Drawing.Point(62, 50);
+            this.cbGen4.Name = "cbGen4";
+            this.cbGen4.Size = new System.Drawing.Size(55, 17);
+            this.cbGen4.TabIndex = 7;
+            this.cbGen4.Text = "Gen 4";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.darkGroupBox4);
             this.Controls.Add(this.darkGroupBox3);
             this.Controls.Add(this.darkGroupBox2);
             this.Controls.Add(this.darkGroupBox1);
@@ -306,6 +358,8 @@ namespace BDSP_Randomizer
             this.darkGroupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinLevel)).EndInit();
+            this.darkGroupBox4.ResumeLayout(false);
+            this.darkGroupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,7 +384,11 @@ namespace BDSP_Randomizer
         private DarkUI.Controls.DarkNumericUpDown numMinLevel;
         private DarkUI.Controls.DarkLabel darkLabel2;
         private DarkUI.Controls.DarkNumericUpDown numMaxLevel;
-        private DarkUI.Controls.DarkLabel darkLabel3;
+        private DarkUI.Controls.DarkGroupBox darkGroupBox4;
+        private DarkUI.Controls.DarkCheckBox cbGen1;
+        private DarkUI.Controls.DarkCheckBox cbGen3;
+        private DarkUI.Controls.DarkCheckBox cbGen2;
+        private DarkUI.Controls.DarkCheckBox cbGen4;
     }
 }
 
