@@ -52,6 +52,12 @@ namespace BDSP_Randomizer
             this.cbGen3 = new DarkUI.Controls.DarkCheckBox();
             this.cbGen2 = new DarkUI.Controls.DarkCheckBox();
             this.cbGen4 = new DarkUI.Controls.DarkCheckBox();
+            this.darkGroupBox5 = new DarkUI.Controls.DarkGroupBox();
+            this.darkCheckBox1 = new DarkUI.Controls.DarkCheckBox();
+            this.darkCheckBox2 = new DarkUI.Controls.DarkCheckBox();
+            this.darkCheckBox3 = new DarkUI.Controls.DarkCheckBox();
+            this.darkCheckBox4 = new DarkUI.Controls.DarkCheckBox();
+            this.darkCheckBox5 = new DarkUI.Controls.DarkCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.darkGroupBox1.SuspendLayout();
             this.darkGroupBox2.SuspendLayout();
@@ -59,6 +65,7 @@ namespace BDSP_Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numMaxLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinLevel)).BeginInit();
             this.darkGroupBox4.SuspendLayout();
+            this.darkGroupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRandomize
@@ -78,7 +85,7 @@ namespace BDSP_Randomizer
             this.btnLoadSettings.Name = "btnLoadSettings";
             this.btnLoadSettings.Size = new System.Drawing.Size(186, 32);
             this.btnLoadSettings.TabIndex = 3;
-            this.btnLoadSettings.Text = "Load gamesettings";
+            this.btnLoadSettings.Text = "Load Resources";
             this.btnLoadSettings.Click += new System.EventHandler(this.btnLoadSettings_Click);
             // 
             // cbEncounters
@@ -334,11 +341,79 @@ namespace BDSP_Randomizer
             this.cbGen4.TabIndex = 7;
             this.cbGen4.Text = "Gen 4";
             // 
+            // darkGroupBox5
+            // 
+            this.darkGroupBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.darkGroupBox5.Controls.Add(this.darkCheckBox1);
+            this.darkGroupBox5.Controls.Add(this.darkCheckBox2);
+            this.darkGroupBox5.Controls.Add(this.darkCheckBox3);
+            this.darkGroupBox5.Controls.Add(this.darkCheckBox4);
+            this.darkGroupBox5.Controls.Add(this.darkCheckBox5);
+            this.darkGroupBox5.Location = new System.Drawing.Point(473, 109);
+            this.darkGroupBox5.Name = "darkGroupBox5";
+            this.darkGroupBox5.Size = new System.Drawing.Size(123, 140);
+            this.darkGroupBox5.TabIndex = 15;
+            this.darkGroupBox5.TabStop = false;
+            this.darkGroupBox5.Text = "Utilities";
+            this.darkGroupBox5.Visible = false;
+            // 
+            // darkCheckBox1
+            // 
+            this.darkCheckBox1.AutoSize = true;
+            this.darkCheckBox1.Enabled = false;
+            this.darkCheckBox1.Location = new System.Drawing.Point(18, 117);
+            this.darkCheckBox1.Name = "darkCheckBox1";
+            this.darkCheckBox1.Size = new System.Drawing.Size(117, 17);
+            this.darkCheckBox1.TabIndex = 8;
+            this.darkCheckBox1.Text = "Randomize Abilities";
+            this.darkCheckBox1.Visible = false;
+            // 
+            // darkCheckBox2
+            // 
+            this.darkCheckBox2.AutoSize = true;
+            this.darkCheckBox2.Location = new System.Drawing.Point(18, 25);
+            this.darkCheckBox2.Name = "darkCheckBox2";
+            this.darkCheckBox2.Size = new System.Drawing.Size(81, 17);
+            this.darkCheckBox2.TabIndex = 5;
+            this.darkCheckBox2.Text = "60FPS mod";
+            // 
+            // darkCheckBox3
+            // 
+            this.darkCheckBox3.AutoSize = true;
+            this.darkCheckBox3.Enabled = false;
+            this.darkCheckBox3.Location = new System.Drawing.Point(18, 71);
+            this.darkCheckBox3.Name = "darkCheckBox3";
+            this.darkCheckBox3.Size = new System.Drawing.Size(120, 17);
+            this.darkCheckBox3.TabIndex = 6;
+            this.darkCheckBox3.Text = "Randomize Trainers";
+            this.darkCheckBox3.Visible = false;
+            // 
+            // darkCheckBox4
+            // 
+            this.darkCheckBox4.AutoSize = true;
+            this.darkCheckBox4.Location = new System.Drawing.Point(18, 48);
+            this.darkCheckBox4.Name = "darkCheckBox4";
+            this.darkCheckBox4.Size = new System.Drawing.Size(135, 17);
+            this.darkCheckBox4.TabIndex = 11;
+            this.darkCheckBox4.Text = "Randomize Enc Levels";
+            // 
+            // darkCheckBox5
+            // 
+            this.darkCheckBox5.AutoSize = true;
+            this.darkCheckBox5.Enabled = false;
+            this.darkCheckBox5.Location = new System.Drawing.Point(18, 94);
+            this.darkCheckBox5.Name = "darkCheckBox5";
+            this.darkCheckBox5.Size = new System.Drawing.Size(103, 17);
+            this.darkCheckBox5.TabIndex = 7;
+            this.darkCheckBox5.Text = "Randomize TMs";
+            this.darkCheckBox5.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.darkGroupBox5);
             this.Controls.Add(this.darkGroupBox4);
             this.Controls.Add(this.darkGroupBox3);
             this.Controls.Add(this.darkGroupBox2);
@@ -360,6 +435,8 @@ namespace BDSP_Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.numMinLevel)).EndInit();
             this.darkGroupBox4.ResumeLayout(false);
             this.darkGroupBox4.PerformLayout();
+            this.darkGroupBox5.ResumeLayout(false);
+            this.darkGroupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,6 +466,12 @@ namespace BDSP_Randomizer
         private DarkUI.Controls.DarkCheckBox cbGen3;
         private DarkUI.Controls.DarkCheckBox cbGen2;
         private DarkUI.Controls.DarkCheckBox cbGen4;
+        private DarkUI.Controls.DarkGroupBox darkGroupBox5;
+        private DarkUI.Controls.DarkCheckBox darkCheckBox1;
+        private DarkUI.Controls.DarkCheckBox darkCheckBox2;
+        private DarkUI.Controls.DarkCheckBox darkCheckBox3;
+        private DarkUI.Controls.DarkCheckBox darkCheckBox4;
+        private DarkUI.Controls.DarkCheckBox darkCheckBox5;
     }
 }
 

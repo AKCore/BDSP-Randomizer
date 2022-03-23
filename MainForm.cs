@@ -10,10 +10,14 @@ using System.Windows.Forms;
 using DarkUI.Forms;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
+using Python.Runtime;
+using IronPython;
 namespace BDSP_Randomizer
 {
     public partial class MainForm : DarkForm
     {
+
         private static readonly Random getrandom = new Random();
         private List<int> _gen1 = new List<int>();
         private List<int> _gen2 = new List<int>();
@@ -29,13 +33,14 @@ namespace BDSP_Randomizer
             }
         }
 
+
         string resourcesPath = "";
         public MainForm()
         {
             InitializeComponent();
             tbLog.AppendText("BDSP Randomizer Intialized" + Environment.NewLine);
 
-            for(int i = 1; i < 152; i++)
+            for (int i = 1; i < 152; i++)
             {
                 _gen1.Add(i);
             }
@@ -63,10 +68,56 @@ namespace BDSP_Randomizer
             //Load the resources folder that contains the sheets. 
             resourcesPath = AppDomain.CurrentDomain.BaseDirectory + "\\resources";
             tbLog.AppendText("resources loaded" + Environment.NewLine);
+            string encounter = File.ReadAllText(resourcesPath + "\\encounters.py");
+            using (Py.GIL())
+            {
+                using (PyScope scope = Py.CreateScope())
+                {
+                    PythonEngine.Exec(encounter);
+                }
+            }
         }
 
+        private void DoReimport()
+        {
+            //if ((cbEncounters.Checked || cbEncLevel.Checked))
+            //{
+            //    string file;
+            //    string filename;
+            //    if (rbDiamond.Checked)
+            //    {
+            //        file = resourcesPath + "\\FieldEncountTable_d.txt";
+            //        filename = "FieldEncountTable_d";
+            //    }
+            //    else
+            //    {
+            //        file = resourcesPath + "\\FieldEncountTable_p.txt";
+            //        filename = "FieldEncountTable_p";
+            //    }
+                
+            //    using (FileStream fs = File.OpenRead(file))
+            //    using (StreamReader sr = new StreamReader(fs))
+            //    {
+            //        AssetImportExport importer = new AssetImportExport();
+            //        byte[] bytes = importer.ImportTextAsset(sr);
 
-        public int PickPokemon()
+
+
+            //        //AssetsReplacer replacer = AssetImportExport.CreateAssetReplacer(_assetContainer, bytes);
+            //        BundleReplacer bunRepl = new BundleReplacerFromMemory("FieldEncountTable_p", null, true, bytes, -1);
+
+            //        assetInst.file.Write(bunWriter, new List<BundleReplacer>() { bunRepl });
+
+            //        using (var stream = File.OpenWrite("compressedbundle.unity3d"))
+            //        using (var writer = new AssetsFileWriter(stream))
+            //        {
+            //            bun.Pack(bun.reader, writer, AssetBundleCompressionType.LZMA);
+            //        }
+
+            //    }
+            //}
+        }
+         public int PickPokemon()
         {
             lock (getrandom)
             {
@@ -89,11 +140,11 @@ namespace BDSP_Randomizer
         }
         private void btnRandomize_Click(object sender, EventArgs e)
         {
-            if (cbEncounters.Checked )
+            if (cbEncounters.Checked)
             {
                 RandomizeEncounters();
             }
-            if(cbEncLevel.Checked)
+            if (cbEncLevel.Checked)
             {
                 RandomizeEncounterLevels();
             }
@@ -118,6 +169,21 @@ namespace BDSP_Randomizer
             }
         }
 
+        private string[] LoadGlobalGameManager()
+        {
+            string[] retVal = null;
+            try
+            {
+                retVal = File.ReadAllLines(resourcesPath + "\\FieldEncountTable_d.txt");
+                tbLog.AppendText("Encounter Sheet Loaded!" + Environment.NewLine);
+                return retVal;
+            }
+            catch
+            {
+                DarkMessageBox.Show(this, "Unable to load global game manager, make sure its in the resources folder.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
         private void SaveEncounterSheet(string[] content)
         {
             if (rbDiamond.Checked)
@@ -130,6 +196,9 @@ namespace BDSP_Randomizer
         }
         private void RandomizeEncounters()
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             string[] encounters = LoadEncounterSheet();
             
             if(encounters == null)
@@ -220,7 +289,8 @@ namespace BDSP_Randomizer
                 }
             }
             SaveEncounterSheet(encounters);
-            
+            stopwatch.Stop();
+            tbLog.AppendText($"Encounters randomized in {stopwatch.ElapsedMilliseconds}ms" + Environment.NewLine);
             Thread.Sleep(300);
         }
         private void RandomizeEncounterLevels()
